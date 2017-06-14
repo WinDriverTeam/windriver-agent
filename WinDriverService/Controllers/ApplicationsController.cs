@@ -4,6 +4,8 @@ using WinAutomationService.Models.RequestModels;
 using WinAutomationService.Models.ResponseModels;
 using WinAutomationService.Models.UIAutomation;
 using WinAutomationService.WinAutoServices;
+using System.Net.Http;
+using System.Net;
 
 namespace WinAutomationService.Controllers
 {
@@ -27,7 +29,7 @@ namespace WinAutomationService.Controllers
         // POST WinAuto/Application
         public object Post([FromBody] ControlApplicationRequest applicationRequest)
         {
-            try
+           try
             {
                 Console.WriteLine("Start Launching application " + applicationRequest);
                 var app = Services.Application.GetApplication(applicationRequest);

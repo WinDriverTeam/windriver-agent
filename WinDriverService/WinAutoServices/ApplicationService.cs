@@ -17,8 +17,6 @@ namespace WinAutomationService.WinAutoServices
         private const string AttachToProcessByExecutable = "AttachToProcessByExecutable";
         private const string AttachToProcessByProcessId = "AttachToProcessByProcessId";
         private const string AttachOrLaunchByProcessName = "AttachOrLaunchByProcessName";
-        //   private const string CloseApplicationMethodName = "CloseApplication";
-
 
         public ApplicationWrapper GetApplication(ControlApplicationRequest applicationRequest)
         {
@@ -40,11 +38,6 @@ namespace WinAutomationService.WinAutoServices
             }
             applicationRequest.ApplicationName = application?.Name;
 
-            if (application.GetWindows().Count == 0 && applicationRequest.ProcessName != null)
-            {
-                Process appProcess = Process.GetProcessesByName(applicationRequest.ProcessName).FirstOrDefault();
-                application = Application.Attach(appProcess);
-            }
             return  _applicationRepository.Save(application);
         }
 

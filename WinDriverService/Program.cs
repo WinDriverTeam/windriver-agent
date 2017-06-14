@@ -32,21 +32,9 @@ namespace WinDriverService
         static void Main(string[] args)
         {
             string url = GetParamValue(args[0], "url=");
-            string hub = GetParamValue(args[1], "hub=");
             // Start OWIN host 
             using (WebApp.Start<Startup>(url: url))
             {
-                Console.WriteLine("driver agent - {0}", url);
-                Console.WriteLine("hub controller - {0}", hub);
-                var values = new NameValueCollection();
-                values["nodeUrl"] = url;
-
-                var client = new WebClient();
-                var response = client.UploadValues(hub + "/register", values);
-
-                var responseString = Encoding.Default.GetString(response);
-                Console.WriteLine(responseString);
-
                 Console.WriteLine("CONGRATS!!! You've launched WinDriver on {0} ...", url);
                 Console.ReadLine();
             }
