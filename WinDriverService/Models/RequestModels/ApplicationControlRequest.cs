@@ -14,6 +14,8 @@
 
         public string ApplicationName { get; set; }
 
+        public string Arguments { get; set; }
+
 
         public override string ToString()
         {
@@ -22,7 +24,8 @@
                    $"{nameof(Executable)}: {Executable}, " +
                    $"{nameof(ProcessId)}: {ProcessId}, " +
                    $"{nameof(ProcessName)}: {ProcessName}, " +
-                   $"{nameof(ApplicationName)}: {ApplicationName}";
+                   $"{nameof(ApplicationName)}: {ApplicationName}" +
+                   $"{nameof(Arguments)}: {Arguments}";
         }
     }
 }

@@ -23,8 +23,8 @@ namespace WinAutomationService.WinAutoServices
             Application application = null;
 
             if (applicationRequest.MethodName == LaunchByExecutable)
-                application = Application.Launch(applicationRequest.Executable);
-
+                application = Application.Launch(new ProcessStartInfo(applicationRequest.Executable,applicationRequest.Arguments));
+  
             if (applicationRequest.MethodName == AttachToProcessByProcessId)
                 application = Application.Attach(applicationRequest.ProcessId);
 
