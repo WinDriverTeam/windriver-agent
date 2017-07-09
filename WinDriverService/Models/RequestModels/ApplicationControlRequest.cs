@@ -8,7 +8,7 @@
 
         public string Executable { get; set; }
 
-        public string ProcessId { get; set; }
+        public int ProcessId { get; set; }
 
         public string ProcessName { get; set; }
 

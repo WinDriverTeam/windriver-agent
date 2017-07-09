@@ -14,7 +14,7 @@ namespace WinAutomationService.WinAutoServices
 
         // Names of Application class methods
         private const string LaunchByExecutable = "LaunchByExecutable";
-        private const string AttachToProcessByExecutable = "AttachToProcessByExecutable";
+        private const string AttachToProcessByProcessName = "AttachToProcessByProcessName";
         private const string AttachToProcessByProcessId = "AttachToProcessByProcessId";
         private const string AttachOrLaunchByProcessName = "AttachOrLaunchByProcessName";
 
@@ -28,13 +28,12 @@ namespace WinAutomationService.WinAutoServices
             if (applicationRequest.MethodName == AttachToProcessByProcessId)
                 application = Application.Attach(applicationRequest.ProcessId);
 
-            if (applicationRequest.MethodName == AttachToProcessByExecutable)
-                application = Application.Attach(applicationRequest.Executable);
+            if (applicationRequest.MethodName == AttachToProcessByProcessName)
+                application = Application.Attach(applicationRequest.ProcessName);
 
             if (applicationRequest.MethodName == AttachOrLaunchByProcessName)
             {
-                application =
-                    Application.AttachOrLaunch(Process.GetProcessesByName(applicationRequest.ProcessName)[0].StartInfo);
+                application = Application.AttachOrLaunch(new ProcessStartInfo(applicationRequest.ProcessName));
             }
             applicationRequest.ApplicationName = application?.Name;
 
